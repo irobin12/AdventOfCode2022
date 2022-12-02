@@ -1,0 +1,5 @@
+C:\Users\Ines\RiderProjects\AdventOfCode2022\Day1\bin\Debug\Day1.exe
+C:\Users\Ines\RiderProjects\AdventOfCode2022\Day1\bin\Debug\Day1.pdb
+C:\Users\Ines\RiderProjects\AdventOfCode2022\Day1\obj\Debug\Day1.csprojAssemblyReference.cache
+C:\Users\Ines\RiderProjects\AdventOfCode2022\Day1\obj\Debug\Day1.exe
+C:\Users\Ines\RiderProjects\AdventOfCode2022\Day1\obj\Debug\Day1.pdb
