@@ -17,6 +17,7 @@ namespace AdventOfCode2022
          int[][] pairs = new int[input.Length][];
 
          int numberOfPairsFullyContained = 0;
+         int overlappingPairs = 0;
 
          for (int i = 0; i < input.Length; i++)
          {
@@ -37,9 +38,18 @@ namespace AdventOfCode2022
             {
                numberOfPairsFullyContained++;
             }
+            
+            if (pairs[i][0] >= pairs[i][2] && pairs[i][0] <= pairs[i][3] ||
+                pairs[i][1] >= pairs[i][2] && pairs[i][1] <= pairs[i][3] ||
+                pairs[i][2] >= pairs[i][0] && pairs[i][2] <= pairs[i][1] ||
+                pairs[i][3] >= pairs[i][0] && pairs[i][3] <= pairs[i][1])
+            {
+               overlappingPairs++;
+            }
          }
          
          Console.WriteLine(numberOfPairsFullyContained);
+         Console.WriteLine(overlappingPairs);
       }
    }
 }
