@@ -9,15 +9,19 @@ namespace AdventOfCode2022
    {
       private class Rucksack
       {
-         private readonly string contentsFullList;
-         private int middleIndex => contentsFullList.Length / 2;
-         private char specialItem => contentsFullList.Substring(0, middleIndex).Intersect(contentsFullList.Substring(middleIndex)).First();
-         public int itemPriority => char.IsUpper(specialItem) ? specialItem - 64 + 26 : specialItem - 64 - 32;
+         public readonly string contentsFullList;
+         private int MiddleIndex => contentsFullList.Length / 2;
+         public int ItemPriority => GetItemPriority(contentsFullList.Substring(0, MiddleIndex).Intersect(contentsFullList.Substring(MiddleIndex)).First());
 
          public Rucksack(string contentsFullList)
          {
             this.contentsFullList = contentsFullList;
          }
+      }
+
+      private static int GetItemPriority(char itemType)
+      {
+         return char.IsUpper(itemType) ? itemType - 64 + 26 : itemType - 64 - 32;
       }
       
       public static void Main()
@@ -34,7 +38,18 @@ namespace AdventOfCode2022
             rucksacks[i] = new Rucksack(input[i]);
          }
          
-         Console.WriteLine(rucksacks.Sum(r => r.itemPriority));
+         Console.WriteLine(rucksacks.Sum(r => r.ItemPriority));// Part 1 answer
+
+         // Part 2 below
+         int sum = 0;
+         
+         for (int i1 = 0; i1 < rucksacks.Length; i1 += 3)
+         {
+            var commonItems = rucksacks[i1].contentsFullList.Intersect(rucksacks[i1+1].contentsFullList.Intersect(rucksacks[i1+2].contentsFullList));
+            sum += GetItemPriority(commonItems.FirstOrDefault());
+         }
+         
+         Console.WriteLine(sum);
       }
    }
 }
