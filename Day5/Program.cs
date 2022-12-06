@@ -29,19 +29,10 @@ namespace AdventOfCode2022
          //string[] input = File.ReadAllLines("ExampleInput.txt");
          string[] input = File.ReadAllLines("Input.txt");
 
-         //int indexOfEmptyLine = -1;
          int indexOfEmptyLine = Array.FindIndex(input, s => s == string.Empty);
-         
-         /*for (int i = 0; i < input.Length; i++)
-         {
-            if (input[i] == String.Empty)
-            {
-               indexOfEmptyLine = i;
-               break;
-            }
-         }*/
-
          int startingLineIndex = indexOfEmptyLine - 2;
+         
+         // Parse stacks input
          string startingLine = input[startingLineIndex];
          Dictionary<int, Stack<char>> stacks = new Dictionary<int, Stack<char>>();
 
@@ -71,8 +62,8 @@ namespace AdventOfCode2022
             instructions.Enqueue(new Instruction(int.Parse(digits[0]), int.Parse(digits[1]), int.Parse(digits[2])));
          }
 
-         // Execute instructions
-         while (instructions.Count > 0)
+         // Execute part 1 instructions
+         /*while (instructions.Count > 0)
          {
             var instruction = instructions.Dequeue();
 
@@ -80,9 +71,26 @@ namespace AdventOfCode2022
             {
                stacks[instruction.destination].Push(stacks[instruction.origin].Pop());
             }
+         }*/
+         
+         // Execute part 2 instructions
+         while (instructions.Count > 0)
+         {
+            var instruction = instructions.Dequeue(); 
+            Stack<char> invertedStack = new Stack<char>();
+
+            for (int i = 0; i < instruction.amountToMove; i++)
+            {
+               invertedStack.Push(stacks[instruction.origin].Pop());
+            }
+
+            while (invertedStack.Count > 0)
+            {
+               stacks[instruction.destination].Push(invertedStack.Pop());
+            }
          }
 
-         // Get Part 1 Answer
+         // Get answer
          foreach (KeyValuePair<int,Stack<char>> keyValuePair in stacks)
          {
             Console.Write(keyValuePair.Value.Peek());

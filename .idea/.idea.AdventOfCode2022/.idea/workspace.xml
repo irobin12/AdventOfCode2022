@@ -134,23 +134,4 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Day5/Program.cs</url>
-          <line>123</line>
-          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day5\Program.cs" initialLine="66" containingFunctionPresentation="method 'Main'">
-            <startOffsets>
-              <option value="4019" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4051" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
 </project>
