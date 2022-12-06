@@ -139,42 +139,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Day5/Program.cs</url>
-          <line>109</line>
+          <line>123</line>
           <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day5\Program.cs" initialLine="66" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="3589" />
+              <option value="4019" />
             </startOffsets>
             <endOffsets>
-              <option value="3621" />
+              <option value="4051" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Day5/Program.cs</url>
-          <line>85</line>
-          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day5\Program.cs" initialLine="85" containingFunctionPresentation="method 'Main'">
-            <startOffsets>
-              <option value="2625" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2635" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Day5/Program.cs</url>
-          <line>77</line>
-          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day5\Program.cs" initialLine="77" containingFunctionPresentation="method 'Main'">
-            <startOffsets>
-              <option value="2248" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2307" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
