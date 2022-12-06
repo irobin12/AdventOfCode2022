@@ -6,6 +6,7 @@
     <projectFile>Day3/Day3.csproj</projectFile>
     <projectFile>Day4/Day4.csproj</projectFile>
     <projectFile>Day5/Day5.csproj</projectFile>
+    <projectFile>Day6/Day6.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="493fc0d1-0682-4437-8ad1-559e50aa034e" name="Changes" comment="" />
@@ -29,7 +30,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.CSharpInteractiveConfiguration" />
   </component>
-  <component name="RunManager" selected=".NET Project.Day5">
+  <component name="RunManager" selected=".NET Project.Day6">
     <configuration name="AdventOfCode2022" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Day1/bin/Debug/Day1.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -120,12 +121,31 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Day6" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Day6/bin/Debug/Day6.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Day6" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Day6/Day6.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="0" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.8" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue=".NET Project.AdventOfCode2022" />
       <item itemvalue=".NET Project.Day2" />
       <item itemvalue=".NET Project.Day3" />
       <item itemvalue=".NET Project.Day4" />
       <item itemvalue=".NET Project.Day5" />
+      <item itemvalue=".NET Project.Day6" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
