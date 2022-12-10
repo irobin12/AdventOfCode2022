@@ -39,7 +39,8 @@ namespace AdventOfCode2022
          fileInput = input;
          
          ProcessInput(2, root);
-         Console.WriteLine(GetDirectorySum(root));
+         //Console.WriteLine(GetDirectorySum(root));
+         FindAllDirectoriesSizes();
       }
 
       private static void ProcessInput(int startIndex, Node parentNode)
@@ -98,6 +99,31 @@ namespace AdventOfCode2022
          }
          
          return sum;
+      }
+
+      private static void FindAllDirectoriesSizes()
+      {
+         CalculateDirectorySize(root);
+      }
+      
+      private static int CalculateDirectorySize(Node parentNode)
+      {
+         var size = 0;
+         
+         foreach (var node in parentNode.nodes)
+         {
+            if (!node.isDirectory)
+            {
+               size += node.size;
+            }
+            else
+            {
+               size += CalculateDirectorySize(node);
+            }
+         }
+
+         parentNode.size = size;
+         return size;
       }
    }
 }

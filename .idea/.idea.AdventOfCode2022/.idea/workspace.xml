@@ -182,13 +182,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
-          <line>42</line>
+          <line>43</line>
           <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="39" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="1137" />
+              <option value="1175" />
             </startOffsets>
             <endOffsets>
-              <option value="1138" />
+              <option value="1176" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
@@ -197,6 +197,7 @@
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="size" />
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="isDirectory" />
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="name" />
       </pinned-members>
