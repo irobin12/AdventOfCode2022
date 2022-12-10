@@ -182,13 +182,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
-          <line>41</line>
+          <line>42</line>
           <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="39" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="1086" />
+              <option value="1137" />
             </startOffsets>
             <endOffsets>
-              <option value="1087" />
+              <option value="1138" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
