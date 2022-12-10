@@ -193,6 +193,19 @@
           </properties>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
+          <line>100</line>
+          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="101" containingFunctionPresentation="method 'GetDirectoriesSum'">
+            <startOffsets>
+              <option value="2850" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2851" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

@@ -39,8 +39,8 @@ namespace AdventOfCode2022
          fileInput = input;
          
          ProcessInput(2, root);
-         //Console.WriteLine(GetDirectorySum(root));
          FindAllDirectoriesSizes();
+         Console.WriteLine(GetDirectoriesSum(root));
       }
 
       private static void ProcessInput(int startIndex, Node parentNode)
@@ -72,35 +72,6 @@ namespace AdventOfCode2022
          }
       }
 
-      // Each directory must be <= 100,00 to be taken into account
-      private static int GetTotalDirectoriesSum()
-      {
-         int sum = 0;
-
-         GetTotalDirectoriesSum();
-         return sum;
-      }
-      
-      // Each directory must be <= 100,00 to be taken into account in the total
-      private static int GetDirectorySum(Node parentNode)
-      {
-         int sum = 0;
-
-         foreach (var node in parentNode.nodes)
-         {
-            if (!node.isDirectory) sum += node.size;
-            else
-            {
-               var nodeSum = GetDirectorySum(node);
-               if (nodeSum <= 100000) sum += nodeSum;
-            }
-
-            if (sum > 100000) return 0;
-         }
-         
-         return sum;
-      }
-
       private static void FindAllDirectoriesSizes()
       {
          CalculateDirectorySize(root);
@@ -124,6 +95,20 @@ namespace AdventOfCode2022
 
          parentNode.size = size;
          return size;
+      }
+
+      private static int GetDirectoriesSum(Node parentNode)
+      {
+         // Count directory only if its size <= 100000
+         var sum = 0;
+
+         if (parentNode.size <= 100000)
+         {
+            sum += parentNode.size;
+         }
+
+         sum += parentNode.nodes.Where(node => node.isDirectory).Sum(GetDirectoriesSum);
+         return sum;
       }
    }
 }
