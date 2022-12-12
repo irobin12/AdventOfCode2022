@@ -8,23 +8,25 @@ namespace AdventOfCode2022
 {
    public class Node
    {
+      public Node parentNode;
       public readonly string name;
       public readonly bool isDirectory;
       public int size;
-      public List<Node> nodes = new List<Node>();
 
-      public Node(string name, bool isDirectory, int size = 0)
+      public Node(string name, bool isDirectory, Node parentNode, int size = 0)
       {
          this.name = name;
          this.isDirectory = isDirectory;
+         this.parentNode = parentNode;
          this.size = size;
       }
    }
    
    internal class Program
    {
-      private static Node root = new Node("/", true);
+      //private static Node root = new Node("/", true);
       private static string[] fileInput;
+      private static List<Node> nodes = new List<Node>();
 
       public static void Main()
       {
@@ -37,33 +39,57 @@ namespace AdventOfCode2022
          //string input = File.ReadAllText("Input.txt");
 
          fileInput = input;
+
+         nodes.Add(new Node("/", true, null));
          
-         ProcessInput(2, root);
-         FindAllDirectoriesSizes();
-         Console.WriteLine(GetDirectoriesSum(root));
+         ProcessInput();
+         AddSizeToParentDirectories();
+         //FindAllDirectoriesSizes();
+         //Console.WriteLine(GetDirectoriesSum(root));
       }
 
-      private static void ProcessInput(int startIndex, Node parentNode)
+      private static void ProcessInput()
       {
-         for (int i = startIndex; i < fileInput.Length; i++)
+         for (int i = 0; i < fileInput.Length; i++)
          {
             string line = fileInput[i];
-
-            switch (line[0])
+            
+            Node GetParentNode()
             {
-               case '$':
-                  goto ProcessDirectories;
-               case 'd':
-                  parentNode.nodes.Add(new Node(line.Substring(4), true));
-                  break;
-               default:
-                  int lastDigitIndex = Array.FindLastIndex(line.ToCharArray(), char.IsDigit);
-                  parentNode.nodes.Add(new Node(line.Substring(lastDigitIndex + 2), false, Int32.Parse(line.Substring(0, lastDigitIndex + 1))));
-                  break;
+               for (int j = i; j >= 0; j--)
+               {
+                  string previousLine = fileInput[j];
+                  if (Regex.IsMatch(previousLine, "\\$ cd [A-Za-z/]"))
+                  {
+                     return nodes.Find(n => n.name == previousLine.Substring(5));
+                  }
+               }
+
+               return null;
+            }
+
+            if (line.Substring(0, 3) == "dir")
+            {
+               nodes.Add(new Node(line.Substring(4), true, GetParentNode()));
+            }
+            else if (line[0] != '$')
+            {
+               int lastDigitIndex = Array.FindLastIndex(line.ToCharArray(), char.IsDigit);
+               nodes.Add(new Node(line.Substring(lastDigitIndex + 2), false, GetParentNode(),
+                  Int32.Parse(line.Substring(0, lastDigitIndex + 1))));
             }
          }
+      }
 
-         ProcessDirectories:
+      private static void AddSizeToParentDirectories()
+      {
+         foreach (Node node in nodes)
+         {
+         }
+      }
+
+      /*private static void ProcessDirectories(Node parentNode)
+      {
          foreach (Node node in parentNode.nodes.Where(node => node.isDirectory))
          {
             string commandLine = "$ cd " + node.name;
@@ -109,6 +135,6 @@ namespace AdventOfCode2022
 
          sum += parentNode.nodes.Where(node => node.isDirectory).Sum(GetDirectoriesSum);
          return sum;
-      }
+      }*/
    }
 }
