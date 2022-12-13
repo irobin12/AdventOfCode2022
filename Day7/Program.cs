@@ -13,11 +13,15 @@ namespace AdventOfCode2022
       public readonly bool isDirectory;
       public int size;
       public int treeSize;
+      public List<Node> children;
+      public int indexInInput;
 
-      public Node(string name, bool isDirectory, Node parentNode, int size = 0)
+      public Node(string name, bool isDirectory, int indexInInput = -1, List<Node> children = null, int size = 0)
       {
          this.name = name;
          this.isDirectory = isDirectory;
+         this.indexInInput = indexInInput;
+         this.children = children;
          this.parentNode = parentNode;
          this.size = size;
       }
@@ -26,7 +30,7 @@ namespace AdventOfCode2022
       {
          if (other.treeSize < treeSize)
             return 1;
-         if (other.treeSize > treeSize)
+         else
             return 0;
       }
    }
@@ -36,132 +40,121 @@ namespace AdventOfCode2022
       //private static Node root = new Node("/", true);
       private static string[] fileInput;
       private static List<Node> nodes = new List<Node>();
+      private static List<Node> directories = new List<Node>();
 
       public static void Main()
       {
          // Edit Configurations > Working directory to find the files path
 
-         string[] input = File.ReadAllLines("ExampleInput.txt");
-         //string[] input = File.ReadAllLines("Input.txt");
+         //string[] input = File.ReadAllLines("ExampleInput.txt");
+         string[] input = File.ReadAllLines("Input.txt");
          
          //string input = File.ReadAllText("ExampleInput.txt");
          //string input = File.ReadAllText("Input.txt");
 
          fileInput = input;
 
-         nodes.Add(new Node("/", true, null));
-         
-         ProcessInput();
-         foreach (Node node in nodes)
-         {
-            node.treeSize = GetTreeSize(node);
-         }
-         AddSizeToParentDirectories();
-         //FindAllDirectoriesSizes();
-         //Console.WriteLine(GetDirectoriesSum(root));
+         RegisterAllDirectories();
+         PopulateAllDirectories();
+         CalculateDirectoriesSizes();
       }
 
-      private static void ProcessInput()
+      private static void RegisterAllDirectories()
       {
          for (int i = 0; i < fileInput.Length; i++)
          {
             string line = fileInput[i];
             
-            Node GetParentNode()
+            List<Node> GetChildren()
             {
-               for (int j = i; j >= 0; j--)
+               List<Node> children = new List<Node>();
+               
+               for (int j = i + 2; j < fileInput.Length; j++)
                {
-                  string previousLine = fileInput[j];
-                  if (Regex.IsMatch(previousLine, "\\$ cd [A-Za-z/]"))
+                  string nextLine = fileInput[j];
+
+                  switch (nextLine[0])
                   {
-                     return nodes.Find(n => n.name == previousLine.Substring(5));
+                     case '$':
+                        goto End;
+                     case 'd':
+                        string directoryName = nextLine.Substring(5);
+                        Node childDirectory = directories.Find(d => d.name == directoryName);
+                        if(childDirectory == null)
+                        {
+                           //childDirectory = new Node(directoryName, true, GetChildren());
+                           directories.Add(childDirectory);
+                        }
+                        children.Add(childDirectory);
+                        break;
+                     default:
+                        int lastDigitIndex = Array.FindLastIndex(line.ToCharArray(), char.IsDigit);
+                        children.Add(new Node(line.Substring(lastDigitIndex + 2), false, size:Int32.Parse(line.Substring(0, lastDigitIndex + 1))));
+                        break;
                   }
                }
-
-               return null;
+               
+               End:
+               return children;
             }
 
-            if (line.Substring(0, 3) == "dir")
+            if (line.Substring(0, 3) == "$ c" && line[line.Length - 1] != '.')
             {
-               nodes.Add(new Node(line.Substring(4), true, GetParentNode()));
+               string name = line.Substring(5);
+               if(directories.Find(d => d.name == name) == null)
+               {
+                  directories.Add(new Node(name, true, indexInInput:i));
+               }
             }
-            else if (line[0] != '$')
+         }
+      }
+
+      private static void PopulateAllDirectories()
+      {
+         foreach (Node directory in directories)
+         {
+            directory.children = new List<Node>();
+            for (int i = directory.indexInInput + 2; i < fileInput.Length; i++)
             {
-               int lastDigitIndex = Array.FindLastIndex(line.ToCharArray(), char.IsDigit);
-               nodes.Add(new Node(line.Substring(lastDigitIndex + 2), false, GetParentNode(),
-                  Int32.Parse(line.Substring(0, lastDigitIndex + 1))));
+               string line = fileInput[i];
+
+               switch (line[0])
+               {
+                  case '$':
+                     goto End;
+                  case 'd':
+                     string directoryName = line.Substring(4);
+                     Node childDirectory = directories.Find(d => d.name == directoryName);
+                     directory.children.Add(childDirectory);
+                     break;
+                  default:
+                     int lastDigitIndex = Array.FindLastIndex(line.ToCharArray(), char.IsDigit);
+                     directory.children.Add(new Node(line.Substring(lastDigitIndex + 2), false, size:Int32.Parse(line.Substring(0, lastDigitIndex + 1))));
+                     break;
+               }
             }
+            
+            End: ;
          }
       }
 
-      private static int GetTreeSize(Node node, int treeSize = 0)
+      private static void CalculateDirectoriesSizes()
       {
-         if (node.parentNode != null)
+         foreach (Node directory in directories)
          {
-            treeSize = GetTreeSize(node.parentNode, treeSize + 1);
+            if (directory.size != 0) continue;
+            CalculateDirectorySize(directory);
          }
-
-         return treeSize;
       }
 
-      private static void AddSizeToParentDirectories()
+      private static void CalculateDirectorySize(Node directory)
       {
-         List<Node> sortedNodes = new List<Node>(nodes.Count);
-         sortedNodes = nodes.Sort()
-         
-         foreach (Node node in nodes)
+         foreach (Node child in directory.children.Where(c => c.isDirectory && c.size == 0))
          {
-            // how do we get the top nodes weight added last? do I need to flip the structure from parent to children?
-         }
-      }
-
-      /*private static void ProcessDirectories(Node parentNode)
-      {
-         foreach (Node node in parentNode.nodes.Where(node => node.isDirectory))
-         {
-            string commandLine = "$ cd " + node.name;
-            int index = Array.FindIndex(fileInput, s => s == commandLine);
-            ProcessInput(index + 2, node);
-         }
-      }
-
-      private static void FindAllDirectoriesSizes()
-      {
-         CalculateDirectorySize(root);
-      }
-      
-      private static int CalculateDirectorySize(Node parentNode)
-      {
-         var size = 0;
-         
-         foreach (var node in parentNode.nodes)
-         {
-            if (!node.isDirectory)
-            {
-               size += node.size;
-            }
-            else
-            {
-               size += CalculateDirectorySize(node);
-            }
+            CalculateDirectorySize(child);
          }
 
-         parentNode.size = size;
-         return size;
+         directory.size = directory.children.Sum(c => c.size);
       }
-
-      private static int GetDirectoriesSum(Node parentNode)
-      {
-         // Count directory only if its size <= 100000
-         var sum = 0;
-
-         if (parentNode.size <= 100000)
-         {
-            sum += parentNode.size;
-         }
-
-         sum += parentNode.nodes.Where(node => node.isDirectory).Sum(GetDirectoriesSum);
-         return sum;
-      }*/
    }
 }

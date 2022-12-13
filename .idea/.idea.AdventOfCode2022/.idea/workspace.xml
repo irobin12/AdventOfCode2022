@@ -187,42 +187,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
-          <line>153</line>
-          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="101" containingFunctionPresentation="method 'GetDirectoriesSum'">
+          <line>59</line>
+          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="55" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="4337" />
+              <option value="1691" />
             </startOffsets>
             <endOffsets>
-              <option value="4338" />
+              <option value="1692" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
-          <line>61</line>
-          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="43" containingFunctionPresentation="method 'Main'">
-            <startOffsets>
-              <option value="1689" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1690" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
-          <line>115</line>
-          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="107" containingFunctionPresentation="method 'AddSizeToParentDirectories'">
-            <startOffsets>
-              <option value="3362" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3363" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="19" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -237,6 +211,7 @@
     <watches-manager>
       <configuration name="DotNetProject">
         <watch expression="nodes" />
+        <watch expression="directories" />
       </configuration>
     </watches-manager>
   </component>
