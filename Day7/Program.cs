@@ -1,47 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode2022
 {
-   public class Node : IComparable<Node>
+   public class Node
    {
-      public Node parentNode;
       public readonly string name;
-      public readonly bool isDirectory;
       public int size;
-      public int treeSize;
-      public List<Node> children;
-      public int indexInInput;
+      public readonly List<Node> children;
 
-      public Node(string name, bool isDirectory, int indexInInput = -1, List<Node> children = null, int size = 0)
+      public Node(string name, List<Node> children = null, int size = 0)
       {
          this.name = name;
-         this.isDirectory = isDirectory;
-         this.indexInInput = indexInInput;
          this.children = children;
-         this.parentNode = parentNode;
          this.size = size;
-      }
-
-      public int CompareTo(Node other)
-      {
-         if (other.treeSize < treeSize)
-            return 1;
-         else
-            return 0;
       }
    }
    
    internal class Program
    {
-      //private static Node root = new Node("/", true);
-      private static string[] fileInput;
-      private static List<Node> nodes = new List<Node>();
-      private static List<Node> directories = new List<Node>();
-
       public static void Main()
       {
          // Edit Configurations > Working directory to find the files path
@@ -52,86 +31,66 @@ namespace AdventOfCode2022
          //string input = File.ReadAllText("ExampleInput.txt");
          //string input = File.ReadAllText("Input.txt");
 
-         fileInput = input;
+         int totalSize = 0;
+         Node root = new Node("/", new List<Node>());
+         Stack<Node> hierarchy = new Stack<Node>();
+         
+         hierarchy.Push(root);
 
-         RegisterAllDirectories();
-         PopulateAllDirectories();
-         CalculateDirectoriesSizes();
-      }
-
-      private static void RegisterAllDirectories()
-      {
-         for (int i = 0; i < fileInput.Length; i++)
+         void GetDirectorySizeAndPop()
          {
-            string line = fileInput[i];
-            if (line.Substring(0, 3) == "$ c" && line[line.Length - 1] != '.')
+            var node = hierarchy.Pop();
+            foreach (Node child in node.children)
             {
-               string name = line.Substring(5);
-               directories.Add(new Node(name, true, indexInInput:i));
+               node.size += child.size;
             }
-         }
-      }
 
-      private static void PopulateAllDirectories()
-      {
-         foreach (Node directory in directories)
+            if (node.size < 100000) 
+               totalSize += node.size;
+         }
+
+         for (int i = 2; i < input.Length; i++)
          {
-            int lastIndex = directory.indexInInput + 2;
-            for (int i = directory.indexInInput + 2; i < fileInput.Length; i++)
+            string line = input[i];
+            
+            switch (line)
             {
-               if (fileInput[i][0] == '$')
+               case "$ ls":
+                  continue;
+               case "$ cd ..":
+                  GetDirectorySizeAndPop();
+                  break;
+               default:
                {
-                  lastIndex = i - 1;
+                  if (Regex.IsMatch(line, "\\$ cd [A-Za-z]"))
+                  {
+                     hierarchy.Push(hierarchy.Peek().children.Find(c => c.name == line.Substring(5)));
+                  }
+                  else
+                  {
+                     Node child;
+                     if (line[0] == 'd')
+                     {
+                        child = new Node(line.Substring(4), new List<Node>());
+                     }
+                     else
+                     {
+                        int lastDigitIndex = Array.FindLastIndex(line.ToCharArray(), char.IsDigit);
+                        child = new Node(line.Substring(lastDigitIndex + 2), size:Int32.Parse(line.Substring(0, lastDigitIndex + 1)));
+                     }
+                     hierarchy.Peek().children.Add(child);
+                  }
                   break;
                }
-
-               if (i == fileInput.Length - 1)
-               {
-                  lastIndex = i;
-                  break;
-               }
-            }
-
-            directory.children = new List<Node>();
-            for (int i = directory.indexInInput + 2; i <= lastIndex; i++)
-            {
-               string line = fileInput[i];
-
-               switch (line[0])
-               {
-                  case 'd':
-                     string directoryName = line.Substring(4);
-                     Node childDirectory = directories.Find(d => d.name == directoryName); // cause recursion
-                     directory.children.Add(childDirectory);
-                     break;
-                  default:
-                     int lastDigitIndex = Array.FindLastIndex(line.ToCharArray(), char.IsDigit);
-                     directory.children.Add(new Node(line.Substring(lastDigitIndex + 2), false, size:Int32.Parse(line.Substring(0, lastDigitIndex + 1))));
-                     break;
-               }
             }
          }
-      }
 
-      private static void CalculateDirectoriesSizes()
-      {
-         for (int index = 0; index < directories.Count; index++)
+         while (hierarchy.Count > 0)
          {
-            Node directory = directories[index];
-            Console.WriteLine($"Calculating size of directory {directory.name} at index {index}.");
-            if (directory.size != 0) continue;
-            CalculateDirectorySize(directory);
-         }
-      }
-
-      private static void CalculateDirectorySize(Node directory)
-      {
-         foreach (Node child in directory.children.Where(c => c.isDirectory && c.size == 0))
-         {
-            CalculateDirectorySize(child);
+            GetDirectorySizeAndPop();
          }
 
-         directory.size = directory.children.Sum(c => c.size);
+         Console.WriteLine(totalSize);
       }
    }
 }
