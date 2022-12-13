@@ -6,12 +6,13 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode2022
 {
-   public class Node
+   public class Node : IComparable<Node>
    {
       public Node parentNode;
       public readonly string name;
       public readonly bool isDirectory;
       public int size;
+      public int treeSize;
 
       public Node(string name, bool isDirectory, Node parentNode, int size = 0)
       {
@@ -19,6 +20,14 @@ namespace AdventOfCode2022
          this.isDirectory = isDirectory;
          this.parentNode = parentNode;
          this.size = size;
+      }
+
+      public int CompareTo(Node other)
+      {
+         if (other.treeSize < treeSize)
+            return 1;
+         if (other.treeSize > treeSize)
+            return 0;
       }
    }
    
@@ -43,6 +52,10 @@ namespace AdventOfCode2022
          nodes.Add(new Node("/", true, null));
          
          ProcessInput();
+         foreach (Node node in nodes)
+         {
+            node.treeSize = GetTreeSize(node);
+         }
          AddSizeToParentDirectories();
          //FindAllDirectoriesSizes();
          //Console.WriteLine(GetDirectoriesSum(root));
@@ -81,10 +94,24 @@ namespace AdventOfCode2022
          }
       }
 
+      private static int GetTreeSize(Node node, int treeSize = 0)
+      {
+         if (node.parentNode != null)
+         {
+            treeSize = GetTreeSize(node.parentNode, treeSize + 1);
+         }
+
+         return treeSize;
+      }
+
       private static void AddSizeToParentDirectories()
       {
+         List<Node> sortedNodes = new List<Node>(nodes.Count);
+         sortedNodes = nodes.Sort()
+         
          foreach (Node node in nodes)
          {
+            // how do we get the top nodes weight added last? do I need to flip the structure from parent to children?
          }
       }
 

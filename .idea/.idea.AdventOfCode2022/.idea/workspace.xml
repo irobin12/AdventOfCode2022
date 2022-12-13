@@ -18,9 +18,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/898512ddb9b74303996c5d2e8d378f73364548/8f/eda7ef4d/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/edef46c9b2db4b878c98495bfdc516fa568ba8/a6/587d6df5/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Day7/ConsoleApplication1/Properties/AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Day7/ConsoleApplication1/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -184,43 +187,55 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
-          <line>126</line>
+          <line>153</line>
           <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="101" containingFunctionPresentation="method 'GetDirectoriesSum'">
             <startOffsets>
-              <option value="3538" />
+              <option value="4337" />
             </startOffsets>
             <endOffsets>
-              <option value="3539" />
+              <option value="4338" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
-          <line>48</line>
+          <line>61</line>
           <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="43" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="1355" />
+              <option value="1689" />
             </startOffsets>
             <endOffsets>
-              <option value="1356" />
+              <option value="1690" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
+          <line>115</line>
+          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="107" containingFunctionPresentation="method 'AddSizeToParentDirectories'">
+            <startOffsets>
+              <option value="3362" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3363" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="size" />
-        <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="parentNode" />
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="isDirectory" />
+        <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="treeSize" />
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="name" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="DotNetProject">
-        <watch expression="root" />
         <watch expression="nodes" />
       </configuration>
     </watches-manager>
