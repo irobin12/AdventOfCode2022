@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode2022
@@ -30,11 +31,11 @@ namespace AdventOfCode2022
          
          //string input = File.ReadAllText("ExampleInput.txt");
          //string input = File.ReadAllText("Input.txt");
-
-         int totalSize = 0;
-         Node root = new Node("/", new List<Node>());
-         Stack<Node> hierarchy = new Stack<Node>();
          
+         int totalSizeOfSmallishDirectories = 0;
+         Node root = new Node("/", new List<Node>());
+         
+         Stack<Node> hierarchy = new Stack<Node>();
          hierarchy.Push(root);
 
          void GetDirectorySizeAndPop()
@@ -46,7 +47,7 @@ namespace AdventOfCode2022
             }
 
             if (node.size < 100000) 
-               totalSize += node.size;
+               totalSizeOfSmallishDirectories += node.size;
          }
 
          for (int i = 2; i < input.Length; i++)
@@ -90,7 +91,26 @@ namespace AdventOfCode2022
             GetDirectorySizeAndPop();
          }
 
-         Console.WriteLine(totalSize);
+         Console.WriteLine(totalSizeOfSmallishDirectories);
+         
+         // Part 2 below
+
+         int spaceNeeded = 30000000 - (70000000 - root.size);
+         List<int> directorySizesBigEnough = new List<int>();
+         FindDirectoriesBigEnough(root);
+
+         void FindDirectoriesBigEnough(Node node)
+         {
+            if(node.size >= spaceNeeded) 
+               directorySizesBigEnough.Add(node.size);
+
+            foreach (Node child in node.children.Where(c => c.children != null))
+            {
+               FindDirectoriesBigEnough(child);
+            }
+         }
+
+         Console.WriteLine(directorySizesBigEnough.Min());
       }
    }
 }
