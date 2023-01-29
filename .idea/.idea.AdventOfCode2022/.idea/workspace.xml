@@ -9,6 +9,7 @@
     <projectFile>Day6/Day6.csproj</projectFile>
     <projectFile>../Day7/ConsoleApplication1/ConsoleApplication1.csproj</projectFile>
     <projectFile>Day7/Day7.csproj</projectFile>
+    <projectFile>Day8/Day8.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="493fc0d1-0682-4437-8ad1-559e50aa034e" name="Changes" comment="" />
@@ -19,11 +20,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/898512ddb9b74303996c5d2e8d378f73364548/8f/eda7ef4d/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/edef46c9b2db4b878c98495bfdc516fa568ba8/f5/58e73ca6/Number.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/edef46c9b2db4b878c98495bfdc516fa568ba8/a6/587d6df5/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Day7/ConsoleApplication1/Properties/AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Day7/ConsoleApplication1/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -33,13 +31,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34968466" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.45129642" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.26909602" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.48493344" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.CSharpInteractiveConfiguration" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.21148825" />
+    <property name="settings.editor.selected.configurable" value="RiderIisExpressOptionsPageId" />
   </component>
-  <component name="RunManager" selected=".NET Project.Day7">
+  <component name="RunManager" selected=".NET Project.Day8">
     <configuration name="AdventOfCode2022" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Day1/bin/Debug/Day1.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -166,6 +165,24 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Day8" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Day8/bin/Debug/Day8.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Day8/" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Day8/Day8.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="0" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.8" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue=".NET Project.AdventOfCode2022" />
       <item itemvalue=".NET Project.Day2" />
@@ -174,6 +191,7 @@
       <item itemvalue=".NET Project.Day5" />
       <item itemvalue=".NET Project.Day6" />
       <item itemvalue=".NET Project.Day7" />
+      <item itemvalue=".NET Project.Day8" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -187,22 +205,50 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Day7/Program.cs</url>
-          <line>59</line>
+          <line>113</line>
           <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day7\Program.cs" initialLine="55" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="1691" />
+              <option value="3394" />
             </startOffsets>
             <endOffsets>
-              <option value="1692" />
+              <option value="3395" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Day8/Program.cs</url>
+          <line>54</line>
+          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day8\Program.cs" initialLine="31" containingFunctionPresentation="method 'Main'">
+            <startOffsets>
+              <option value="1570" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1571" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Day8/Program.cs</url>
+          <line>67</line>
+          <properties documentPath="C:\Users\Ines\Documents\GitHub\AdventOfCode2022\Day8\Program.cs" initialLine="67" containingFunctionPresentation="method 'FindHighestTreesByRow'">
+            <startOffsets>
+              <option value="1967" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2023" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="Type#System.Collections.Generic.List`1" memberName="Count" />
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="size" />
+        <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="children" />
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="isDirectory" />
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="treeSize" />
         <PinnedItemInfo parentTag="Type#AdventOfCode2022.Node" memberName="name" />
@@ -210,8 +256,8 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="DotNetProject">
-        <watch expression="nodes" />
-        <watch expression="directories" />
+        <watch expression="trees" />
+        <watch expression="trees2" />
       </configuration>
     </watches-manager>
   </component>
